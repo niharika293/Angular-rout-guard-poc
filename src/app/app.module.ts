@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { OrdersComponent } from './orders/orders.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DefaultComponent } from './default/default.component';
+import { OrdersEditComponent } from './orders-edit/orders-edit.component';
+import { OrdersAddComponent } from './orders-add/orders-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrdersComponent,
     PageNotFoundComponent,
-    DefaultComponent
+    DefaultComponent,
+    OrdersEditComponent,
+    OrdersAddComponent
   ],
   imports: [
     BrowserModule,

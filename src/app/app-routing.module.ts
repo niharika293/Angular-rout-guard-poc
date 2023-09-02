@@ -4,11 +4,25 @@ import { OrdersComponent } from './orders/orders.component';
 import { DefaultComponent } from './default/default.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuard } from './auth.guard';
+import { OrdersEditComponent } from './orders-edit/orders-edit.component';
+import { OrdersAddComponent } from './orders-add/orders-add.component';
+import { AuthchildrenGuard } from './authchildren.guard';
 
 const routes: Routes = [
   {path : '', component : DefaultComponent}, // for default page opening
-  {path : 'orders', component : OrdersComponent, canActivate : [AuthGuard]},
-  {path : '**', component : PageNotFoundComponent } // if no route matches 
+  // {path : 'orders', component : OrdersComponent, canActivate : [AuthGuard]},
+  {path : 'orders', children : [
+    {path : '', component : OrdersComponent, canActivate : [AuthGuard]},
+    // {path : 'edit', component : OrdersEditComponent, canActivateChild : [AuthchildrenGuard]}, 
+    // canActivate needs to be on the parent route, leaving it on the child route won't make any effect. 
+    { path : '', canActivateChild : [AuthchildrenGuard], children : [
+      {path : 'edit', component : OrdersEditComponent},
+      {path : 'add', component : OrdersAddComponent}
+    ]}
+  ]}, // here authguard makes sure that the user is logged in & he can access the orders, 
+    // but in order to rsetrict edit-orders by that user we can use canActivateChild here. 
+  {path : '**', component : PageNotFoundComponent } ,// if no route matches 
+  
 ];
 
 @NgModule({
