@@ -8,6 +8,8 @@ import { OrdersEditComponent } from './orders-edit/orders-edit.component';
 import { OrdersAddComponent } from './orders-add/orders-add.component';
 import { AuthchildrenGuard } from './authchildren.guard';
 import { ProfileCheckGuard } from './profile-check.guard';
+import { LoginComponent } from './login/login.component';
+import { DeactivateGuard } from './deactivate.guard';
 
 const routes: Routes = [
   {path : '', component : DefaultComponent}, // for default page opening
@@ -26,6 +28,7 @@ const routes: Routes = [
   ]},
    // here authguard makes sure that the user is logged in & he can access the orders, 
     // but in order to rsetrict edit-orders by that user we can use canActivateChild here. 
+  {path : 'login', component : LoginComponent, runGuardsAndResolvers : 'always', canDeactivate : [DeactivateGuard]},
   {path : '**', component : PageNotFoundComponent } ,// if no route matches 
   
 ];

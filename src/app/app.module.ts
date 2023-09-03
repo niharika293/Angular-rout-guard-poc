@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { DefaultComponent } from './default/default.component';
 import { OrdersEditComponent } from './orders-edit/orders-edit.component';
 import { OrdersAddComponent } from './orders-add/orders-add.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { OrdersAddComponent } from './orders-add/orders-add.component';
     PageNotFoundComponent,
     DefaultComponent,
     OrdersEditComponent,
-    OrdersAddComponent
+    OrdersAddComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
