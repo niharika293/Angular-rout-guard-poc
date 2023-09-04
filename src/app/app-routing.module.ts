@@ -10,6 +10,8 @@ import { AuthchildrenGuard } from './authchildren.guard';
 import { ProfileCheckGuard } from './profile-check.guard';
 import { LoginComponent } from './login/login.component';
 import { DeactivateGuard } from './deactivate.guard';
+import { CampaignComponent } from './campaign/campaign.component';
+import { ResolverGuard } from './resolver.guard';
 
 const routes: Routes = [
   {path : '', component : DefaultComponent}, // for default page opening
@@ -29,6 +31,12 @@ const routes: Routes = [
    // here authguard makes sure that the user is logged in & he can access the orders, 
     // but in order to rsetrict edit-orders by that user we can use canActivateChild here. 
   {path : 'login', component : LoginComponent, runGuardsAndResolvers : 'always', canDeactivate : [DeactivateGuard]},
+  // NOTE :  Resolve doesn't return an array, hence make it an object always!
+  // First we have the data here, which gets resolved using the resolve guard & 
+  // then we collect the route values in the component. 
+  { path : 'campaign', component : CampaignComponent, resolve : {
+    data : ResolverGuard
+  }},
   {path : '**', component : PageNotFoundComponent } ,// if no route matches 
   
 ];

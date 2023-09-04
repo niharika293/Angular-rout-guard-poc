@@ -9,6 +9,7 @@ import { DefaultComponent } from './default/default.component';
 import { OrdersEditComponent } from './orders-edit/orders-edit.component';
 import { OrdersAddComponent } from './orders-add/orders-add.component';
 import { LoginComponent } from './login/login.component';
+import { CampaignComponent } from './campaign/campaign.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LoginComponent } from './login/login.component';
     DefaultComponent,
     OrdersEditComponent,
     OrdersAddComponent,
-    LoginComponent
+    LoginComponent,
+    CampaignComponent
   ],
   imports: [
     BrowserModule,
